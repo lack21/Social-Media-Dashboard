@@ -1,0 +1,417 @@
+// lear
+// Social Media Dashboard
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+// Colors
+$limeGreen: hsl(163, 72%, 41%);
+$brightRed: hsl(356, 69%, 56%);
+$facebook: hsl(208, 92%, 53%);
+$twitter: hsl(203, 89%, 53%);
+$instagram: to right, hsl(37, 97%, 70%), hsl(329, 70%, 58%);
+$youTube: hsl(348, 97%, 39%);
+
+// Light Theme
+$white: hsl(0, 0%, 100%);
+$veryPaleBlue: hsl(225, 100%, 98%);
+$lightGrayishBlue: hsl(227, 47%, 96%);
+$darkGrayishBlue: hsl(228, 12%, 44%);
+$toggle: hsl(230, 22%, 74%);
+$lightGray: hsl(227, 47%, 91%);
+
+// Dark Theme
+$darkBlue: hsl(230, 17%, 14%);
+$veryDarkBlue: hsl(232, 19%, 15%);
+$darkDesaturatedBlue: hsl(228, 28%, 20%);
+$desaturatedBlue: hsl(228, 34%, 66%);
+$darkToggle: to right, hsl(210, 78%, 56%), hsl(146, 68%, 55%);
+$lightBlue: hsl(228, 28%, 25%);
+
+// Body
+body {
+  position: relative;
+  min-height: 100vh;
+  background-color: $white;
+  isolation: isolate;
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 220px;
+    background-color: $veryPaleBlue;
+    border-radius: 0 0 1.75rem 1.75rem;
+    -webkit-border-radius: 0 0 1.75rem 1.75rem;
+    -moz-border-radius: 0 0 1.75rem 1.75rem;
+    -ms-border-radius: 0 0 1.75rem 1.75rem;
+    -o-border-radius: 0 0 1.75rem 1.75rem;
+    z-index: -1;
+  }
+
+  &.active {
+    background-color: $darkBlue;
+
+    &::after {
+      background-color: $veryDarkBlue;
+    }
+
+    .main {
+      .header {
+        .title {
+          color: $white;
+        }
+
+        .text {
+          color: $desaturatedBlue;
+        }
+
+        .theme-switcher {
+          background: linear-gradient($darkToggle);
+
+          .circle {
+            left: 7.5%;
+            background-color: $darkDesaturatedBlue;
+          }
+        }
+
+        .right-content {
+          border-color: $darkDesaturatedBlue;
+        }
+      }
+
+      .center-content .item {
+        background-color: $darkDesaturatedBlue;
+
+        .info,
+        .text {
+          color: $desaturatedBlue;
+        }
+
+        .number {
+          color: $white;
+        }
+
+        &:hover {
+          background-color: $lightBlue;
+        }
+      }
+
+      .footer {
+        .heading {
+          color: $white;
+        }
+
+        .item {
+          background-color: $darkDesaturatedBlue;
+
+          &:hover {
+            background-color: $lightBlue;
+          }
+
+          .section {
+            .name {
+              color: $desaturatedBlue;
+            }
+
+            .number {
+              color: $white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Main Content
+.main {
+  margin: auto;
+  max-width: 80rem;
+  padding: 2.5rem 1rem;
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .left-content {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+
+      .title {
+        font-size: 1.75rem;
+        color: $veryDarkBlue;
+        font-weight: 700;
+      }
+
+      .text {
+        font-weight: 700;
+        color: $darkGrayishBlue;
+        font-size: 0.925rem;
+        letter-spacing: 0.75px;
+      }
+    }
+
+    .right-content {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+
+      .text {
+        font-weight: 700;
+        color: $toggle;
+        font-size: 0.925rem;
+        letter-spacing: 0.75px;
+      }
+
+      .theme-switcher {
+        position: relative;
+        width: 56px;
+        height: 28px;
+        border-radius: 2rem;
+        -webkit-border-radius: 2rem;
+        -moz-border-radius: 2rem;
+        -ms-border-radius: 2rem;
+        -o-border-radius: 2rem;
+        background: $toggle;
+        cursor: pointer;
+
+        .circle {
+          position: absolute;
+          top: 10%;
+          left: calc(92.5% - 22px);
+          width: 22px;
+          height: 22px;
+          background-color: $veryPaleBlue;
+          border-radius: 50%;
+          -webkit-border-radius: 50%;
+          -moz-border-radius: 50%;
+          -ms-border-radius: 50%;
+          -o-border-radius: 50%;
+          transition: 0.5s;
+          -webkit-transition: 0.5s;
+          -moz-transition: 0.5s;
+          -ms-transition: 0.5s;
+          -o-transition: 0.5s;
+        }
+
+        &:hover {
+          background: linear-gradient($darkToggle);
+        }
+      }
+    }
+  }
+
+  .center-content {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 2.5rem;
+    margin: 3.5rem 0;
+
+    .item {
+      padding: 2.25rem 1.75rem 1.75rem;
+      text-align: center;
+      position: relative;
+      background-color: $lightGrayishBlue;
+      border-radius: 0.5rem;
+      -webkit-border-radius: 0.5rem;
+      -moz-border-radius: 0.5rem;
+      -ms-border-radius: 0.5rem;
+      -o-border-radius: 0.5rem;
+      overflow: hidden;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $lightGray;
+      }
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 5px;
+      }
+
+      .top-section {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+
+        img {
+          display: block;
+        }
+
+        .info {
+          font-size: 0.925rem;
+          color: $darkGrayishBlue;
+        }
+      }
+
+      .number {
+        font-size: 3.5rem;
+        color: $darkBlue;
+        padding-top: 1.25rem;
+      }
+
+      .text {
+        text-transform: uppercase;
+        font-weight: 400;
+        letter-spacing: 5px;
+        color: $darkGrayishBlue;
+        font-size: 0.875rem;
+        padding-bottom: 1.75rem;
+      }
+
+      .social-info {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        color: $limeGreen;
+        font-weight: 700;
+        font-size: 0.925rem;
+      }
+
+      &:nth-child(1)::after {
+        background-color: $facebook;
+      }
+
+      &:nth-child(2)::after {
+        background-color: $twitter;
+      }
+
+      &:nth-child(3)::after {
+        background: linear-gradient($instagram);
+      }
+
+      &:last-of-type {
+        &::after {
+          background-color: $youTube;
+        }
+
+        .social-info {
+          color: $brightRed;
+        }
+      }
+    }
+  }
+
+  .footer {
+    .heading {
+      font-size: 1.5rem;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 2.5rem;
+      margin-top: 1.75rem;
+
+      .item {
+        display: flex;
+        flex-direction: column;
+        gap: 1.75rem;
+        background-color: $lightGrayishBlue;
+        border-radius: 0.5rem;
+        -webkit-border-radius: 0.5rem;
+        -moz-border-radius: 0.5rem;
+        -ms-border-radius: 0.5rem;
+        -o-border-radius: 0.5rem;
+        padding: 1.5rem 1.75rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: $lightGray;
+        }
+
+        .section {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .name {
+            font-size: 0.925rem;
+            font-weight: 700;
+            color: $darkGrayishBlue;
+          }
+
+          img {
+            display: block;
+          }
+
+          .number {
+            color: $veryDarkBlue;
+            font-size: 2.25rem;
+          }
+
+          .social-info {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            color: $limeGreen;
+            font-weight: 700;
+            font-size: 0.925rem;
+
+            img {
+              display: block;
+            }
+          }
+        }
+
+        &:nth-child(2),
+        &:nth-child(7),
+        &:nth-child(8) {
+          .section .social-info {
+            color: $brightRed;
+          }
+        }
+      }
+    }
+  }
+}
+
+// For Smaller Devices
+@media screen and (max-width: 1024px) {
+  .main .center-content,
+  .main .footer .row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    padding: 1.75rem 5%;
+
+    .header {
+      flex-direction: column;
+      gap: 1.75rem;
+
+      .left-content {
+        margin-right: auto;
+      }
+
+      .right-content {
+        justify-content: space-between;
+        width: 100%;
+        padding-top: 1.25rem;
+        border-top: 1px solid $lightGray;
+      }
+    }
+
+    .center-content,
+    .footer .row {
+      grid-template-columns: 1fr;
+    }
+  }
+}
